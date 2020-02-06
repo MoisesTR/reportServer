@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laboratorio" pageWidth="792" pageHeight="300" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="644fec21-732b-425c-9671-fc17d5b07f40">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="laboratorio"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="preview" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM LABORATORIO]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="DESCRIPCION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESCRIPCION"/>
+	</field>
+	<field name="TIPO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="193" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="30" width="400" height="30" uuid="9784865c-7c5a-4311-9101-589540ba7c09"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[PRUEBA DE LABORATORIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="603" y="120" width="100" height="30" uuid="df47042f-8697-41d2-b799-084a48dd2a6f"/>
+				<textFieldExpression><![CDATA[$P{preview}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="163" width="100" height="30" uuid="7b8060db-79d8-496e-9610-8cf9b377805b"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="113" width="100" height="30" uuid="500d95eb-a2f3-4e60-bcd4-4b201a0961c5"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="97" width="100" height="30" uuid="888d9e2c-fa3c-4709-8992-d99706b8774d"/>
+				<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="114" width="100" height="30" uuid="29a3d0c2-272a-4eee-a001-3a49ed85381f"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
