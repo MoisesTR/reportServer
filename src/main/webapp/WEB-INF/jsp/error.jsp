@@ -1,14 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Reports</title>
-
+    <title>Page Not Found</title>
     <style type="text/css">
         img {
             width: 100%;
@@ -17,7 +12,7 @@
 
         body {
             /* Location of the image */
-            background-image: url("${pageContext.request.contextPath}/images/background.jpg");
+            background-image: url("${pageContext.request.contextPath}/images/404.jpg");
 
             /* Background image is centered vertically and horizontally at all times */
             background-position: center center;

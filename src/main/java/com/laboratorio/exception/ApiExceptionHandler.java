@@ -16,8 +16,7 @@ public class ApiExceptionHandler {
 
         ApiException apiException = new ApiException(
                 e.getMessage(),
-                badRequest,
-                new DateTime()
+                badRequest
         );
 
         return new ResponseEntity<>(apiException, badRequest);
