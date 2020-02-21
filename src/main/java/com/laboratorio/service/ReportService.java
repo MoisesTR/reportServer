@@ -42,8 +42,8 @@ public class ReportService {
 
     public void exportPdfFile(HttpServletResponse response, Map<String, Object> params) {
 
-        if (params.get("id") == null) {
-            throw new ApiRequestException("The id of the report is required!");
+        if (params.get("codeReport") == null) {
+            throw new ApiRequestException("The code of the report is required!");
         }
 
         OutputStream outstr = null;
@@ -52,12 +52,11 @@ public class ReportService {
 
             String path = context.getRealPath("/");
             String folderReports = "/jasper/";
-            Integer idReport = Integer.valueOf((String) params.get("id"));
-            String reportType = (String) params.get("reportType");
+            String codeReport = (String) params.get("codeReport");
+            String reportType = params.get("reportType") != null ? (String) params.get("reportType") : ReportTypeEnum.PDF.toString();
+            String leafType = params.get("leafType") != null ? (String) params.get("leafType") : "A4";
 
-            reportType = reportType != null ? reportType : "PDF";
-
-            Report report = reportDao.getReport(idReport);
+            Report report = reportDao.getReport(codeReport, leafType);
 
             log.info("Info report {}", report.toString());
 
@@ -101,8 +100,8 @@ public class ReportService {
                 xlsExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outstr));
                 xlsExporter.exportReport();
             } else {
-                log.error("Report doesn't exists");
-                throw new ApiRequestException("Report doesn't exists");
+                log.error("The Type {} of Report doesn't exists", reportType);
+                throw new ApiRequestException("The Type { " + reportType + " } of Report doesn't exists");
             }
 
         } catch (Exception e) {
@@ -117,7 +116,7 @@ public class ReportService {
             }
 
             log.error("An error has ocurred generating the report {}", e.getMessage());
-            throw new ApiRequestException("An error has ocurred generating the report");
+            throw new ApiRequestException(e.getMessage());
         }
     }
 }

@@ -27,7 +27,7 @@ public class ReportController {
         return model;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/export", method = {RequestMethod.POST, RequestMethod.GET})
     public void export(HttpServletRequest request, HttpServletResponse response
             , @RequestParam Map<String, Object> params) {

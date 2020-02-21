@@ -13,15 +13,16 @@ import java.sql.Types;
 @Repository
 public class ReporteDao {
 
-    private static final String SQL_REPORT = "" +
+    private static final String SQL_REPORT =
             "SELECT TITULO " +
-            ", NOMBRE_ARCHIVO " +
-            ", DESCRIPCION " +
-            ", ORIGEN_DE_DATOS " +
-            ", FECHA_REGISTRA " +
-            ", FECHA_ACTUALIZA " +
+                    ", NOMBRE_ARCHIVO " +
+                    ", DESCRIPCION " +
+                    ", ORIGEN_DE_DATOS " +
+                    ", FECHA_REGISTRA " +
+                    ", FECHA_ACTUALIZA " +
             "FROM dbo.REPORTES " +
-            "WHERE ID = ?";
+            "WHERE CODIGO_REPORTE = ? " +
+            "AND TIPO_PAGINA = ?";
 
     private final RowMapper<Report> ROW_MAPPER_REPORT = (rs, i) -> {
         Report report = new Report();
@@ -39,10 +40,10 @@ public class ReporteDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Report getReport(Integer idReport) {
+    public Report getReport(String codeReport, String leafType) {
         try {
-            return jdbcTemplate.queryForObject(SQL_REPORT, new Object[]{idReport}
-            , new int[]{Types.INTEGER}, ROW_MAPPER_REPORT);
+            return jdbcTemplate.queryForObject(SQL_REPORT, new Object[]{codeReport, leafType}
+            , new int[]{Types.VARCHAR, Types.VARCHAR}, ROW_MAPPER_REPORT);
         } catch (Exception e) {
             log.error("An error has been occurred getting the report {}", e.getMessage());
             throw new ApiRequestException("An error has been occurred getting the report");
